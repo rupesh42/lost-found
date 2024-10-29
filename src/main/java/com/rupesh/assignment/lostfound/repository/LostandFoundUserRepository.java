@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.rupesh.assignment.lostfound.domain.LostandFoundUser;
 
 @Repository
-public interface LnFUserRepository extends JpaRepository<LostandFoundUser, Long> {
+public interface LostandFoundUserRepository extends JpaRepository<LostandFoundUser, Long> {
 }
 

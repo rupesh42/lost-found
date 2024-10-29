@@ -19,8 +19,9 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 /**
- * This entity is used for LostItems of which the data will be uploaded by user in CSV format.
- * Also adds isClaimed bydefault as false and is changed once a user claims any item.
+ * This entity is used for LostItems of which the data will be uploaded by user in CSV format. Also
+ * adds isClaimed bydefault as false and is changed once a user claims any item.
+ * 
  * @author Rupesh
  *
  */
@@ -31,23 +32,23 @@ import lombok.ToString;
 @ToString
 public class LostItem {
 
-	@Id
-    @GeneratedValue(generator = "custom-id-generator")
-    @GenericGenerator(name = "custom-id-generator", type = LostItemIDGenerator.class)
-    private String id;
+  @Id
+  @GeneratedValue(generator = "custom-id-generator")
+  @GenericGenerator(name = "custom-id-generator", type = LostItemIDGenerator.class)
+  private String id;
 
-    private String name;
-    private LocalDate dateFound;
-    private String locationFound;
-    private int quantity;
+  private String name;
+  private LocalDate dateFound;
+  private String locationFound;
+  private int quantity;
 
-    @OneToMany(mappedBy = "lostItem", cascade = CascadeType.ALL)
-    @JsonIgnore
-    private Set<ClaimRecord> claimedBy;
-    
-    /**
-     * by defalut false will be set, will change once the user claims the item.
-     */
-    private boolean isClaimed;
+  @OneToMany(mappedBy = "lostItem", cascade = CascadeType.ALL)
+  @JsonIgnore
+  private Set<ClaimRecord> claimedBy;
+
+  /**
+   * by defalut false will be set, will change once the user claims the item.
+   */
+  private boolean isClaimed;
 
 }

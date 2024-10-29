@@ -30,80 +30,81 @@ import com.rupesh.assignment.lostfound.service.LostandFoundUserService;
 @RequestMapping("/lost-found")
 public class UserController {
 
-	private LostItemService lostItemService;
+  private LostItemService lostItemService;
 
-	private ClaimRecordService claimRecordService;
+  private ClaimRecordService claimRecordService;
 
-	private LostandFoundUserService userService;
+  private LostandFoundUserService userService;
 
-	@Autowired
-	public UserController(LostItemServiceImpl lostItemService, ClaimRecordService claimRecordService,
-			LostandFoundUserService userService) {
-		this.lostItemService = lostItemService;
-		this.claimRecordService = claimRecordService;
-		this.userService = userService;
-	}
+  @Autowired
+  public UserController(LostItemServiceImpl lostItemService, ClaimRecordService claimRecordService,
+      LostandFoundUserService userService) {
+    this.lostItemService = lostItemService;
+    this.claimRecordService = claimRecordService;
+    this.userService = userService;
+  }
 
-	/**
-	 * Retrieves a list of all lost items.
-	 * 
-	 * @return message success or error
-	 */
-	@GetMapping("/lost-items")
-	public ResponseEntity<List<LostItemDTO>> getAllLostItems() {
-		return ResponseEntity.ok(lostItemService.getAllLostItems());
-	}
+  /**
+   * Retrieves a list of all lost items.
+   * 
+   * @return message success or error
+   */
+  @GetMapping("/lost-items")
+  public ResponseEntity<List<LostItemDTO>> getAllLostItems() {
+    return ResponseEntity.ok(lostItemService.getAllLostItems());
+  }
 
-	/**
-	 * sends a claim request with parameters of userID, ItemID, and Quantity
-	 * 
-	 * @return message success or error
-	 */
-	@PostMapping("/claim-item")
-	public ResponseEntity<String> claimLostItem(@RequestParam Long userId, @RequestParam String itemId,
-			@RequestParam int quantity) {
-		return ResponseEntity.ok(claimRecordService.claimLostItem(userId, itemId, quantity));
-	}
+  /**
+   * sends a claim request with parameters of userID, ItemID, and Quantity
+   * 
+   * @return message success or error
+   */
+  @PostMapping("/claim-item")
+  public ResponseEntity<String> claimLostItem(@RequestParam Long userId,
+      @RequestParam String itemId, @RequestParam int quantity) {
+    return ResponseEntity.ok(claimRecordService.claimLostItem(userId, itemId, quantity));
+  }
 
-	/**
-	 * Retrieves a list of all users.
-	 * 
-	 * @return a list of users
-	 */
+  /**
+   * Retrieves a list of all users.
+   * 
+   * @return a list of users
+   */
 
-	@GetMapping("/all-users")
-	public List<LostandFoundUserDTO> getAllUser() {
-		return userService.getAllUsers();
-	}
+  @GetMapping("/all-users")
+  public List<LostandFoundUserDTO> getAllUser() {
+    return userService.getAllUsers();
+  }
 
-	/**
-	 * Retrieves a list of all claimed items.
-	 * 
-	 * @return success or error message
-	 */
-	
-	@GetMapping("/claimed-items")
-	public ResponseEntity<List<ClaimRecordDTO>> getAllClaimedItems() {
-		return ResponseEntity.ok(claimRecordService.getAllClaimedItems());
-	}
+  /**
+   * Retrieves a list of all claimed items.
+   * 
+   * @return success or error message
+   */
 
-	/**
-	 * This method will upload the CSV file in which the data of lost items will be present.
-	 * Also handles CSV related errors 
-	 * @param file
-	 * @return error or success message.
-	 */
-	@PostMapping("/upload-csv")
-	public ResponseEntity<String> uploadCSVFile(@RequestParam("file") MultipartFile file) {
-		if (file.isEmpty()) {
-			return ResponseEntity.badRequest().body("Please upload a valid CSV file.");
-		}
-		try {
-			lostItemService.processCSVFile(file);
-			return ResponseEntity.ok("CSV file uploaded and data inserted successfully.");
-		} catch (IOException e) {
-			return ResponseEntity.status(500).body("Error while processing the CSV file.");
-		}
-	}
+  @GetMapping("/claimed-items")
+  public ResponseEntity<List<ClaimRecordDTO>> getAllClaimedItems() {
+    return ResponseEntity.ok(claimRecordService.getAllClaimedItems());
+  }
+
+  /**
+   * This method will upload the CSV file in which the data of lost items will be present. Also
+   * handles CSV related errors
+   * 
+   * @param file
+   * @return error or success message.
+   */
+  @PostMapping("/upload-csv")
+  public ResponseEntity<String> uploadCSVFile(@RequestParam("file") MultipartFile file) {
+    if (file.isEmpty()) {
+      return ResponseEntity.badRequest().body("Please upload a valid CSV file.");
+    }
+    try {
+      lostItemService.processCSVFile(file);
+      return ResponseEntity.ok("CSV file uploaded and data inserted successfully.");
+    } catch (IOException e) {
+      return ResponseEntity.status(500).body("Error while processing the CSV file.");
+    }
+  }
 
 }

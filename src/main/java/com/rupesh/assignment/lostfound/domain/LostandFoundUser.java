@@ -15,8 +15,10 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+
 /**
  * This entity will save all the records of the user.
+ * 
  * @author Rupesh
  *
  */
@@ -28,15 +30,15 @@ import lombok.ToString;
 @EqualsAndHashCode(exclude = "claims")
 public class LostandFoundUser {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
 
-	private String name;
+  private String name;
 
-	private String surname;
+  private String surname;
 
-	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-	@JsonIgnore
-	private Set<ClaimRecord> claims;
+  @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+  @JsonIgnore
+  private Set<ClaimRecord> claims;
 }

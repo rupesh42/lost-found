@@ -16,8 +16,8 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 /**
- * This Entity will have all the claim records, which will be processed and
- * updated once a user claims a product
+ * This Entity will have all the claim records, which will be processed and updated once a user
+ * claims a product
  * 
  * @author Rupesh
  *
@@ -29,31 +29,31 @@ import lombok.ToString;
 @ToString
 public class ClaimRecord {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
 
-	@ManyToOne
-	@JoinColumn(name = "user_id")
-	@JsonBackReference
-	private LostandFoundUser user;
+  @ManyToOne
+  @JoinColumn(name = "user_id")
+  @JsonBackReference
+  private LostandFoundUser user;
 
-	@ManyToOne
-	@JoinColumn(name = "lost_item_id")
-	private LostItem lostItem;
+  @ManyToOne
+  @JoinColumn(name = "lost_item_id")
+  private LostItem lostItem;
 
-	private int quantity;
+  private int quantity;
 
-	/**
-	 * always used as today's date, the date the claim happened.
-	 */
-	private LocalDate claimDate;
+  /**
+   * always used as today's date, the date the claim happened.
+   */
+  private LocalDate claimDate;
 
-	public String getUserName() {
-		return user.getName() + " " + user.getSurname();
-	}
+  public String getUserName() {
+    return user.getName() + " " + user.getSurname();
+  }
 
-	public String getProductName() {
-		return lostItem.getName();
-	}
+  public String getProductName() {
+    return lostItem.getName();
+  }
 }

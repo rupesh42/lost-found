@@ -8,15 +8,15 @@ import lombok.Data;
 @Data
 public class LostItemDTO {
 
-	private String id;
+  private String id;
 
-	private String name;
-	private LocalDate dateFound;
-	private String locationFound;
-	private int quantity;
+  private String name;
+  private LocalDate dateFound;
+  private String locationFound;
+  private int quantity;
 
-	private Set<ClaimRecord> claimedBy;
+  private Set<ClaimRecord> claimedBy;
 
-	private boolean isClaimed;
+  private boolean isClaimed;
 
 }
