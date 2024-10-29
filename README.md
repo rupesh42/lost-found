@@ -46,6 +46,10 @@ My Goal of with this assignment was to keep it simple yet effective, bug-proof, 
 - No external library from untrusted source dependency is used.
 - Code smell is as low as possible.
 
+## Flowchart
+
+![path to flowchart](https://github.com/rupesh42/lost-found/blob/main/src/main/resources/Lost-Found.jpg)
+
 ## SWAGGER URL:
 	http://localhost:8081/swagger-ui/index.html
 	
