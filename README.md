@@ -51,7 +51,7 @@ My Goal of with this assignment was to keep it simple yet effective, bug-proof, 
 ![path to flowchart](https://github.com/rupesh42/lost-found/blob/main/src/main/resources/Lost-Found.jpg)
 
 ## SWAGGER URL:
-	http://localhost:8081/swagger-ui/index.html
+	http://localhost:8080/swagger-ui/index.html
 	
 ## Next Steps / Improvement areas:
 ##### 1. Java 23 can be used.
