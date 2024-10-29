@@ -35,7 +35,7 @@ This will be another service (a mock service) to get user details like Name of t
  
 	 mvn clean install
 	 
-#### Technical landscape.
+## Technical landscape.
 
 My Goal of with this assignment was to keep it simple yet effective, bug-proof, user-friendly, maintainable and readable. To achieve this I have tried to use as many latest features as possible. I tried not to go beyond what is asked for as assignment (business requirement). To make the code and application more reliable, I have achieved 86.2% code coverage. I used SonarQube to scan the code smell and solved all major bugs and issues. I also avoided importing unused libraries to keep the jar light-weighted. 
 
